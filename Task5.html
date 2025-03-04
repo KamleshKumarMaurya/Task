@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .slider-container {
+            width: 500px;
+            height: 300px;
+            margin: auto;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .btn:hover {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Simple Image Slider</h2>
+    <div class="slider-container">
+        <button class="btn prev" onclick="prevImage()">❮</button>
+        <img id="slider" src="" alt="Image Slider">
+        <button class="btn next" onclick="nextImage()">❯</button>
+    </div>
+
+    <script>
+        // Array of image URLs
+        const images = [
+            "https://www.bigfootdigital.co.uk/wp-content/uploads/2020/07/image-optimisation-scaled.jpg",
+            "https://static.vecteezy.com/system/resources/thumbnails/036/324/708/small/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+            "https://www.akamai.com/site/im-demo/perceptual-standard.jpg?imbypass=true",
+            "https://www.industrialempathy.com/img/remote/ZiClJf-1920w.jpg"
+        ];
+
+        let currentIndex = 0;
+        const slider = document.getElementById("slider");
+
+        // Function to update the image
+        function updateImage() {
+            slider.style.opacity = "0"; // Fade out effect
+            setTimeout(() => {
+                slider.src = images[currentIndex];
+                slider.style.opacity = "1"; // Fade in effect
+            }, 300);
+        }
+
+        // Next Image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+
+        // Previous Image
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+
+        // Initialize slider
+        updateImage();
+    </script>
+
+</body>
+</html>
