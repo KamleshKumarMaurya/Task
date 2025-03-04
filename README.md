@@ -25,9 +25,9 @@ Assignment
   • salary (double)
   Create a method displayDetails() to print employee details.
   Write a main method to:
-  1. Create at least 3 Employee objects.
-  2. Store them in a list.
-  3. Display their details.
+      Create at least 3 Employee objects.
+      Store them in a list.
+      Display their details.
 
 4 . Create a simple to-do list using JavaScript and the DOM.
   • Allow users to add new tasks.
